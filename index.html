@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Open Link</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    .button {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 30px;
+      font-size: 18px;
+      text-decoration: none;
+      border-radius: 10px;
+      color: #fff;
+      transition: background 0.2s;
+    }
+    .safari {
+      background-color: #34C759;
+    }
+    .safari:hover {
+      background-color: #45d76a;
+    }
+    .chrome {
+      background-color: #DB4437;
+    }
+    .chrome:hover {
+      background-color: #e96055;
+    }
+    .note {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Open in your preferred browser</h1>
+
+  <!-- Open in Safari -->
+  <a 
+    href="https://onlyfans.com/lily_sweety1/c2" 
+    target="_blank" 
+    rel="noopener" 
+    class="button safari"
+  >Open in Safari</a>
+
+  <!-- Open in Chrome -->
+  <a href="#" id="chromeBtn" class="button chrome">Open in Chrome</a>
+
+  <div class="note">
+    Works best outside of Instagram or Facebook app. Tap one of the buttons above.
+  </div>
+
+  <script>
+    const chromeBtn = document.getElementById("chromeBtn");
+    const ofLink = "https://onlyfans.com/lily_sweety1/c2";
+
+    chromeBtn.addEventListener("click", function () {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/android/i.test(ua)) {
+        window.location.href = `intent://onlyfans.com/lily_sweety1/c2#Intent;scheme=https;package=com.android.chrome;end;`;
+      } else if (/iPad|iPhone|iPod/.test(ua)) {
+        window.location.href = `googlechrome://navigate?url=${encodeURIComponent(ofLink)}`;
+        setTimeout(() => {
+          window.location.href = ofLink;
+        }, 1500);
+      } else {
+        window.location.href = ofLink;
+      }
+    });
+  </script>
+
+</body>
+</html>
